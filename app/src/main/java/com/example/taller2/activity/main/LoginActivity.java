@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     // Elementos de la interfaz
     private EditText emailEditText, passwordEditText;
     private Button loginButton;
-    private TextView registerTextView;
+    private TextView registroTextView;
     private ProgressBar progressBar;
 
     // Base de datos Firebase
@@ -59,11 +59,11 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
-        registerTextView = findViewById(R.id.registerTextView);
+        registroTextView = findViewById(R.id.registerTextView);
         progressBar = findViewById(R.id.progressBar);
 
         // Redirigir a la pantalla de registro al hacer clic en el TextView
-        registerTextView.setOnClickListener(v -> {
+        registroTextView.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
         });
 
