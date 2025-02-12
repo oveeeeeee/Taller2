@@ -1,0 +1,175 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:background="@color/white"
+        tools:context=".activity.administrativo.AdministrativoActivity">
+
+        <!-- Título Principal -->
+        <TextView
+            android:id="@+id/tituloAdministrativo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_administrativo"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Tarjeta: Registrar entradas de coches -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRegistrarEntradas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tituloAdministrativo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonRegistrarEntrada"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_registrar_entrada_administador"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tarjeta: Alta y asignación de reparaciones -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReparaciones"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardRegistrarEntradas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonAltaReparaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_alta_reparacion_adminstrativo"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <Button
+                    android:id="@+id/botonAsignarReparaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_asignar_mecanicos_administrativo"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tarjeta: Notificaciones a clientes -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardNotificaciones"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardReparaciones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonEnviarNotificaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_notificar_clientes_administrativo"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tarjeta: Consultar stock y pedidos -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardStockYPedidos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardNotificaciones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonConsultarStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_consultar_stock_piezas_administrativo"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <Button
+                    android:id="@+id/botonHacerPedidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_hacer_pedido_administrativo"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

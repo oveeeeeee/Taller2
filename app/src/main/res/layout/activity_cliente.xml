@@ -1,0 +1,226 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- El ConstraintLayout aquí no necesita declarar los namespaces nuevamente -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:background="@color/white"
+        tools:context=".activity.cliente.ClienteActivity">
+
+        <!-- Título Principal con saludo dinámico -->
+        <TextView
+            android:id="@+id/tituloCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bienvenido"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Card: Consultar y Modificar Perfil -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardModificarPerfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tituloCliente"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonModificarPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_modificar_perfil_cliente"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card: Histórico de Reparaciones -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardHistoricoReparaciones"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardModificarPerfil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonHistoricoReparaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_historico_cliente"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card: Contactar con el Taller -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardContactarTaller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardHistoricoReparaciones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonContactarTaller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_contactar_taller"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card: Detalles de Reparaciones en Curso -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReparacionesCurso"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardContactarTaller"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonReparacionesCurso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_consultar_reparacion"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:drawablePadding="8dp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card: Responder Propuestas de Reparación -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardResponderPropuesta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardReparacionesCurso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonResponderPropuesta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_responder_propuesta"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:drawablePadding="8dp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card: Cerrar sesión -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardCerrarSesion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardResponderPropuesta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonCerrarSesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cerrar_sesion"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

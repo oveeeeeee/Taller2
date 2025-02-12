@@ -1,0 +1,153 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:background="@color/white"
+        tools:context=".activity.mecanicoJefe.MecanicoJefeActivity">
+
+        <!-- Título Principal -->
+        <TextView
+            android:id="@+id/tituloMecanicoJefe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_mecanico_jefe"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Tarjeta: Reparaciones Asignadas -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReparacionesAsignadas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tituloMecanicoJefe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonConsultarReparaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_consultar_reparaciones"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tarjeta: Definir Diagnóstico -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDefinirDiagnostico"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardReparacionesAsignadas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonDefinirDiagnostico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/definir_diagnostico"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Tarjeta: Definir y asignar tareas a mecánicos -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDefinirTareas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardDefinirDiagnostico"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonDefinirTarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_definir_tareas"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardCerrarSesion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/cardDefinirTareas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/botonCerrarSesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cerrar_sesion"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

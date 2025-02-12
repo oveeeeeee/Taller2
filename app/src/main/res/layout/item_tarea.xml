@@ -1,0 +1,43 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Información de la tarea -->
+        <TextView
+            android:id="@+id/textNombreTarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tarea_titulo"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <!-- Nuevo TextView para la matrícula -->
+        <TextView
+            android:id="@+id/textMatriculaCoche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/matricula_titulo"
+            android:textSize="14sp" />
+
+        <!-- Estado de la tarea -->
+        <TextView
+            android:id="@+id/textEstadoTarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/estado_titulo"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="italic" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

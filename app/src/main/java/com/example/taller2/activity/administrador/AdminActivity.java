@@ -12,7 +12,7 @@ import com.example.taller2.R;
  * Actividad principal del administrador donde puede gestionar empleados y su perfil.
  * Permite dar de alta y baja empleados, editar el perfil y cerrar sesión.
  *
- * @autor Laura Ovelleiro
+ * @author Laura Ovelleiro
  */
 public class AdminActivity extends AppCompatActivity {
 
