@@ -7,6 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.taller2.R;
+import com.example.taller2.activity.main.LoginActivity;
 
 /**
  * Actividad principal del administrador donde puede gestionar empleados y su perfil.
