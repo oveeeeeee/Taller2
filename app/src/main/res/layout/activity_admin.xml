@@ -1,10 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.administrador.AdminActivity">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="32dp"
+        android:background="@color/colorPrimary">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tituloAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_administrador"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"/>
+
+        <!-- Descripción -->
+        <TextView
+            android:id="@+id/descripciónAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion_admin"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintTop_toBottomOf="@id/tituloAdmin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Sección: Gestión de Empleados -->
+        <TextView
+            android:id="@+id/tituloGestionEmpleados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seccion_gestion_admin"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintTop_toBottomOf="@id/descripciónAdmin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="30dp"/>
+
+        <Button
+            android:id="@+id/botonAltaEmpleado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_alta_admin"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tituloGestionEmpleados"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/botonBajaEmpleado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_baja_admin"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/botonAltaEmpleado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Sección: Modificación de Perfiles de Usuario -->
+        <TextView
+            android:id="@+id/tituloModificacionPerfiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seccion_modif_admin"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintTop_toBottomOf="@id/botonBajaEmpleado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="30dp"/>
+
+        <Button
+            android:id="@+id/botonEditarPerfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_editar_admin"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tituloModificacionPerfiles"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Sección: Opciones adicionales -->
+
+        <Button
+            android:id="@+id/botonCerrarSesion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="94dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/button_cerrar_admin"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/botonEditarPerfil" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

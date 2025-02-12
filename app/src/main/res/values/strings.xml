@@ -1,3 +1,183 @@
 <resources>
     <string name="app_name">Taller2</string>
+    <string name="titulo_administrador">Administrador</string>
+    <string name="descripcion_admin">Gestiona los empleados y los usuarios desde aquí:</string>
+    <string name="seccion_gestion_admin">Gestión de Empleados</string>
+    <string name="button_alta_admin">Dar de alta</string>
+    <string name="button_baja_admin">Dar de baja</string>
+    <string name="seccion_modif_admin">Modificación de Perfiles</string>
+    <string name="button_editar_admin">Modificar perfil de un usuario</string>
+    <string name="button_cerrar_admin">Cerrar sesión</string>
+    <string name="titulo_administrativo">Administrativo</string>
+    <string name="button_registrar_entrada_administador">Registrar entrada de coches</string>
+    <string name="button_alta_reparacion_adminstrativo">Dar de alta reparaciones</string>
+    <string name="button_asignar_mecanicos_administrativo">Asignar mecánicos a reparaciones</string>
+    <string name="button_notificar_clientes_administrativo">Enviar notificaciones a clientes</string>
+    <string name="button_consultar_stock_piezas_administrativo">Consultar stock de piezas</string>
+    <string name="button_hacer_pedido_administrativo">Hacer pedidos a proveedores</string>
+    <string name="titulo_alta_empleado">Dar de alta empleado</string>
+    <string name="correo_alta_empleado">Correo electrónico del empleado:</string>
+    <string name="hint_correo">ejemplo@correo.com</string>
+    <string name="puesto_del_empleado_alta">Puesto del empleado:</string>
+    <string name="button_guardar_alta_empleado">Guardar</string>
+    <string name="titulo_alta_reparacion">Alta Reparación</string>
+    <string name="descripcion_reparacion">Descripción de la reparación:</string>
+    <string name="seleccionar_coche">Seleccionar coche:</string>
+    <string name="guardar_reparacion">Guardar reparación</string>
+    <string name="titulo_asignar_reparacion">Asignar Reparación</string>
+    <string name="seleccionar_reparacion">Seleccionar reparación:</string>
+    <string name="seleccionar_mecanico_jefe">Seleccionar mecánico jefe:</string>
+    <string name="asignar_reparacion">Asignar Reparación</string>
+    <string name="titulo_asignar_tareas">Asignar Tareas</string>
+    <string name="introduce_matricula_coche">Introduce la matrícula del coche:</string>
+    <string name="buscar">Buscar</string>
+    <string name="estado_reparacion">Estado de la reparación: N/A</string>
+    <string name="guardar_cambios">Guardar cambios</string>
+    <string name="titulo_baja_empleado">Dar de Baja Empleado</string>
+    <string name="correo_electronico">Correo Electrónico</string>
+    <string name="introduce_correo_empleado">Introduce el correo del empleado</string>
+    <string name="button_baja">Dar de Baja</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="button_modificar_perfil_cliente">Modificar mi perfil</string>
+    <string name="button_historico_cliente">Ver histórico de reparaciones</string>
+    <string name="button_contactar_taller">Contactar con el taller</string>
+    <string name="button_consultar_reparacion">Consultar reparaciones en curso</string>
+    <string name="button_responder_propuesta">Responder propuesta</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="titulo_concretar_diagnostico">Concretar diagnóstico</string>
+    <string name="seleccionar_matricula">Seleccionar matrícula:</string>
+    <string name="titulo_consultar_reparacion">Consultar Reparaciones</string>
+    <string name="volver">Volver</string>
+    <string name="titulo_stock_piezas">Stock de Piezas</string>
+    <string name="hint_buscar_pieza">Buscar pieza\n</string>
+    <string name="contactar_taller">Contactar con Taller</string>
+    <string name="button_llamar">Llamar por Teléfono</string>
+    <string name="button_correo">Enviar Correo Electrónico</string>
+    <string name="button_chatear">Chatear por WhatsApp</string>
+    <string name="nombre_tarea">Nombre de la tarea:</string>
+    <string name="hint_tarea_ejemplo">Ej. Cambiar aceite</string>
+    <string name="seleccionar_mecanico">Seleccionar mecánico:</string>
+    <string name="button_asignar_tarea">Asignar tarea\n</string>
+    <string name="button_confirmar_tareas">Confirmar tareas</string>
+    <string name="titulo_detalle_trabajo">Descripción del trabajo</string>
+    <string name="estado_del_trabajo">Estado del trabajo</string>
+    <string name="anadir_comentario">Añadir comentario</string>
+    <string name="hint_anadir_comentario">Añadir comentario</string>
+    <string name="button_guardar_estado">Guardar estado</string>
+    <string name="titulo_editar_perfil_usuario">Editar Perfil de Usuario</string>
+    <string name="correo_usuario">Correo del usuario</string>
+    <string name="nombre_usuario">Nombre del usuario</string>
+    <string name="button_guardar">Guardar</string>
+    <string name="titulo_pedido">Hacer Pedido de Piezas</string>
+    <string name="seleccionar_pieza">Seleccionar pieza:</string>
+    <string name="cantidad_pedido">Cantidad a pedir:</string>
+    <string name="seleccionar_proveedor">Seleccionar proveedor:</string>
+    <string name="button_hacer_pedido">Hacer Pedido</string>
+    <string name="titulo_historial_reparaciones">Historial de Reparaciones</string>
+    <string name="titulo_incluir_comentario">Incluir comentario</string>
+    <string name="tarea">Tarea</string>
+    <string name="escribe_comentario">Escribe tu comentario</string>
+    <string name="button_guardar_comentario">Guardar Comentario</string>
+    <string name="logo_taller">Logo del taller</string>
+    <string name="titulo_login">Bienvenido al Taller</string>
+    <string name="subtitulo_login">Inicia sesión para continuar</string>
+    <string name="correo">Correo Electrónico</string>
+    <string name="tareas_asignadas">Tareas Asignadas</string>
+    <string name="titulo_mecanico_jefe">Mecánico Jefe</string>
+    <string name="button_consultar_reparaciones">Consultar Reparaciones Asignadas</string>
+    <string name="definir_diagnostico">Definir Diagnóstico</string>
+    <string name="button_consultar_reparacion_tarea">Consultar Reparaciones y Tareas</string>
+    <string name="titulo_modificar_estado">Modificar Estado</string>
+    <string name="seleccionar_estado_tarea">Selecciona un nuevo estado para la tarea</string>
+    <string name="matricula_coche">Matrícula del coche:</string>
+    <string name="hint_nuevo_estado">Nuevo Estado</string>
+    <string name="titulo_consultar_perfil">Consultar Perfil</string>
+    <string name="nombre">Nombre</string>
+    <string name="ingresa_nombre">Ingresa tu nombre</string>
+    <string name="ingresa_correo">Ingresa tu correo</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="ingresa_contrasena">Ingresa tu contraseña</string>
+    <string name="titulo_modificar_tarea">Modificar Tarea</string>
+    <string name="estado_tarea">Estado de la tarea:</string>
+    <string name="notificacion_cliente">Notificación al Cliente</string>
+    <string name="reparacion_finalizada">reparación finalizada</string>
+    <string name="presupuesto">presupuesto</string>
+    <string name="descripcion_presupuesto">Descripción del presupuesto</string>
+    <string name="importe_presupuesto">Importe del presupuesto</string>
+    <string name="enviar_notificacion">Enviar Notificación</string>
+    <string name="titulo_register">Bienvenido al Taller</string>
+    <string name="subtitulo_register">Crea tu cuenta para continuar</string>
+    <string name="nombre_completo">Nombre Completo</string>
+    <string name="confirmar_contrasena">Confirmar Contraseña</string>
+    <string name="registrar">Registrar</string>
+    <string name="enlace_inicio">¿Ya tienes una cuenta? Inicia sesión</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="enlace_register">¿No tienes una cuenta? Regístrate</string>
+    <string name="titulo_entrada_coche">Registrar Entrada de Coche</string>
+    <string name="matricula">Matrícula:</string>
+    <string name="hint_matricula">Ingrese la matrícula</string>
+    <string name="marca">Marca:</string>
+    <string name="hint_marca">Ingrese la marca</string>
+    <string name="modelo">Modelo:</string>
+    <string name="hint_modelo">Ingrese el modelo</string>
+    <string name="correo_cliente">Correo del cliente:</string>
+    <string name="hint_correo_cliente">Ingrese el correo del cliente</string>
+    <string name="asignar_mecsnico_jefe">Asignar mecánico jefe para diagnóstico:</string>
+    <string name="button_registrar_entrada">Registrar Entrada</string>
+    <string name="titulo_reparacion_en_curso">Reparaciones en Curso</string>
+    <string name="presupuestos_pendientes">Presupuestos Pendientes</string>
+    <string name="solicitar_piezas">Solicitar piezas</string>
+    <string name="opciones_tarea">Opciones de Tarea</string>
+    <string name="modificar_tarea">Modificar Tarea</string>
+    <string name="incluir_comentarios">Incluir Comentarios</string>
+    <string name="nombre_pieza">Nombre pieza</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="precio">Precio</string>
+    <string name="presupuesto_0">Presupuesto: 0€</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="rechazar">Rechazar</string>
+    <string name="matricula_titulo">Matrícula:</string>
+    <string name="mecanico">Mecánico:</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="estado">Estado:</string>
+    <string name="inicio">Inicio:</string>
+    <string name="fin">Fin:</string>
+    <string name="tarea_titulo">Tarea:</string>
+    <string name="mecanico_tittulo">Mecánico:</string>
+    <string name="estado_titulo">Estado:</string>
+    <string name="button_definir_tareas">Definir y asignar tareas</string>
+    <string name="titulo_definir_tareas">Definir Tareas</string>
+    <string name="mecanico_titulo">Matricula:</string>
+
+    <!-- Array con los estados de reparación para el spinner-->
+    <string-array name="estados_reparacion">
+        <item>pendiente</item>
+        <item>en proceso</item>
+        <item>completado</item>
+    </string-array>
+
+    <!-- Array con los tipos de usuario para el spinner-->
+    <string-array name="tipos_usuario">
+        <item>cliente</item>
+        <item>administrador</item>
+        <item>administrativo</item>
+        <item>mecanico jefe</item>
+        <item>mecanico</item>
+    </string-array>
+
+    <!-- Array con los valores del puesto de empleado para el spinner-->
+    <string-array name="puestos_empleados">
+        <item>administrativo</item>
+        <item>administrador</item>
+        <item>mecanico jefe</item>
+        <item>mecanico</item>
+    </string-array>
+
+    <!-- Array con los estados de la tarea para el spinner-->
+    <string-array name="estados_tarea">
+        <item>pendiente</item>
+        <item>en curso</item>
+        <item>finalizada</item>
+    </string-array>
+
 </resources>
