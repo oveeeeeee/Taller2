@@ -8,12 +8,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.taller2.modelo.Usuario;
 
+/**
+ * Clase SQLiteHelper que gestiona la base de datos SQLite para el proyecto.
+ * Esta clase es responsable de crear las tablas, actualizar la base de datos,
+ * y realizar operaciones básicas como insertar y consultar usuarios.
+ *
+ * @author Laura Ovelleiro
+ */
 public class SQLiteHelper extends SQLiteOpenHelper {
 
+    // Nombre y versión de la base de datos
     private static final String NOMBRE_BD = "taller2.db";
     private static final int VERSION_BD = 1;
 
-    // Tablas
+    // Nombres de las tablas
     private static final String TABLA_USUARIOS = "usuarios";
     private static final String TABLA_PROVEEDORES = "proveedores";
     private static final String TABLA_PIEZAS = "piezas";
@@ -42,12 +50,24 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String COLUMNA_PEDIDO_PROVEEDOR_ID = "proveedor_id";
     private static final String COLUMNA_PEDIDO_CANTIDAD = "cantidad";
 
+    /**
+     * Constructor de la clase SQLiteHelper.
+     *
+     * @param contexto El contexto de la aplicación para acceder a la base de datos.
+     */
     public SQLiteHelper(Context contexto) {
         super(contexto, NOMBRE_BD, null, VERSION_BD);
     }
 
+    /**
+     * Método que se ejecuta cuando se crea la base de datos.
+     * Crea las tablas necesarias en la base de datos.
+     *
+     * @param db El objeto SQLiteDatabase donde se crea la base de datos.
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // Crear tabla de usuarios
         String crearTablaUsuarios = "CREATE TABLE " + TABLA_USUARIOS + " ("
                 + COLUMNA_USUARIO_NOMBRE + " TEXT, "
                 + COLUMNA_USUARIO_CORREO + " TEXT PRIMARY KEY, "
@@ -55,12 +75,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 + COLUMNA_USUARIO_TIPO + " TEXT)";
         db.execSQL(crearTablaUsuarios);
 
+        // Crear tabla de proveedores
         String crearTablaProveedores = "CREATE TABLE " + TABLA_PROVEEDORES + " ("
                 + COLUMNA_PROVEEDOR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMNA_PROVEEDOR_NOMBRE + " TEXT NOT NULL, "
                 + COLUMNA_PROVEEDOR_CONTACTO + " TEXT NOT NULL)";
         db.execSQL(crearTablaProveedores);
 
+        // Crear tabla de piezas
         String crearTablaPiezas = "CREATE TABLE " + TABLA_PIEZAS + " ("
                 + COLUMNA_PIEZA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMNA_PIEZA_NOMBRE + " TEXT NOT NULL, "
@@ -68,6 +90,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 + COLUMNA_PIEZA_PRECIO + " REAL NOT NULL)";
         db.execSQL(crearTablaPiezas);
 
+        // Crear tabla de pedidos
         String crearTablaPedidos = "CREATE TABLE " + TABLA_PEDIDOS + " ("
                 + COLUMNA_PEDIDO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMNA_PEDIDO_PIEZA_ID + " INTEGER NOT NULL, "
@@ -78,6 +101,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(crearTablaPedidos);
     }
 
+    /**
+     * Método que se ejecuta cuando se actualiza la base de datos.
+     * Elimina las tablas antiguas y crea las nuevas.
+     *
+     * @param db El objeto SQLiteDatabase que contiene la base de datos.
+     * @param oldVersion La versión antigua de la base de datos.
+     * @param newVersion La nueva versión de la base de datos.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLA_USUARIOS);
@@ -90,7 +121,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     /**
      * Método para insertar un nuevo usuario en la base de datos.
      *
-     * @param usuario El objeto User que representa al nuevo usuario.
+     * @param usuario El objeto Usuario que representa al nuevo usuario.
      * @return true si la inserción fue exitosa, false si falló.
      */
     public boolean anadirUsuario(Usuario usuario) {
@@ -112,8 +143,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     /**
      * Método para obtener un usuario por su correo electrónico.
      *
-     * @param email Correo electrónico del usuario.
-     * @return El objeto User si se encuentra, null si no se encuentra.
+     * @param email Correo electrónico del usuario a buscar.
+     * @return El objeto Usuario si se encuentra, null si no se encuentra.
      */
     public Usuario getUsuarioConEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -122,13 +153,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         // Verificar si el cursor tiene datos
         if (cursor != null && cursor.moveToFirst()) {
-            // Comprobar si las columnas existen
+            // Obtener los índices de las columnas
             int nombreIndex = cursor.getColumnIndex(COLUMNA_USUARIO_NOMBRE);
             int emailIndex = cursor.getColumnIndex(COLUMNA_USUARIO_CORREO);
             int passwordIndex = cursor.getColumnIndex(COLUMNA_USUARIO_CONTRASENA);
             int tipoIndex = cursor.getColumnIndex(COLUMNA_USUARIO_TIPO);
 
-            // Verificar si los índices son válidos
+            // Verificar si las columnas existen
             if (nombreIndex >= 0 && emailIndex >= 0 && passwordIndex >= 0 && tipoIndex >= 0) {
                 Usuario usuario = new Usuario(
                         cursor.getString(nombreIndex),
