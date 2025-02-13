@@ -1,0 +1,75 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Título de la pantalla -->
+    <TextView
+        android:id="@+id/tituloAsignarReparacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_asignar_reparacion"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="34dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Texto para Reparaciones -->
+    <TextView
+        android:id="@+id/textoReparaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="@string/seleccionar_reparacion"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tituloAsignarReparacion"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Spinner para Reparaciones -->
+    <Spinner
+        android:id="@+id/spinnerReparaciones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/textoReparaciones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Texto para Mecánico Jefe -->
+    <TextView
+        android:id="@+id/textoMecanicoJefe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccionar_mecanico_jefe"
+        android:textSize="16sp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerReparaciones"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Spinner para Mecánico Jefe -->
+    <Spinner
+        android:id="@+id/spinnerMecanicoJefe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/textoMecanicoJefe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón para asignar reparación -->
+    <Button
+        android:id="@+id/botonAsignarReparacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/asignar_reparacion"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerMecanicoJefe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
