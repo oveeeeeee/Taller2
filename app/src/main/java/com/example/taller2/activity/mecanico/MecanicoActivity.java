@@ -66,7 +66,7 @@ public class MecanicoActivity extends AppCompatActivity {
         recyclerTareas.setAdapter(tareaAdapter);
 
         // Referencia a Firebase
-        tareasRef = FirebaseDatabase.getInstance("https://practica-taller-34b3f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("tareas");
+        tareasRef = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("tareas");
 
         // Obtener el email del mecánico autenticado
         String emailMecanico = FirebaseAuth.getInstance().getCurrentUser().getEmail();

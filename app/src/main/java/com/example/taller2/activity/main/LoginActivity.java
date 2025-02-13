@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.taller2.R;
 import com.example.taller2.activity.administrador.AdminActivity;
+import com.example.taller2.activity.administrativo.AdministrativoActivity;
+import com.example.taller2.activity.cliente.ClienteActivity;
+import com.example.taller2.activity.mecanico.MecanicoActivity;
+import com.example.taller2.activity.mecanicoJefe.MecanicoJefeActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Inicializar Firebase
         mAuth = FirebaseAuth.getInstance();
-        usuarioDatabase = FirebaseDatabase.getInstance("https://console.firebase.google.com/u/4/project/taller2-f2bce/database/taller2-f2bce-default-rtdb/data/~2F").getReference("usuarios");
+        usuarioDatabase = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("usuarios");
 
         // Inicialización de las vistas de la actividad
         emailEditText = findViewById(R.id.emailEditText);

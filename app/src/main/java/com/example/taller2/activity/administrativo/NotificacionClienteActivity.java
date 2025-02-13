@@ -58,7 +58,7 @@ public class NotificacionClienteActivity extends AppCompatActivity {
         botonEnviarNotificacion = findViewById(R.id.botonEnviarNotificacion);
 
         // Inicializar la base de datos de Firebase
-        mDatabase = FirebaseDatabase.getInstance("https://practica-taller-34b3f-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
+        mDatabase = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
 
         // Manejar la selección de tipo de notificación
         chipGroupNotificacion.setOnCheckedChangeListener((group, checkedId) -> {

@@ -47,7 +47,7 @@ public class BajaEmpleadoActivity extends AppCompatActivity {
         // Inicialización de vistas y referencia a Firebase
         correoEmpleado = findViewById(R.id.correoEmpleado);
         botonDarDeBaja = findViewById(R.id.botonDarDeBaja);
-        databaseReference = FirebaseDatabase.getInstance("https://console.firebase.google.com/u/4/project/taller2-f2bce/database/taller2-f2bce-default-rtdb/data/~2F").getReference("usuarios");
+        databaseReference = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("usuarios");
 
         // Configuración del botón para iniciar el proceso de baja del empleado
         botonDarDeBaja.setOnClickListener(view -> {

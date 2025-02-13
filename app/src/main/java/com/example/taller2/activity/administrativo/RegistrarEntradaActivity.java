@@ -66,8 +66,8 @@ public class RegistrarEntradaActivity extends AppCompatActivity {
         nombresMecanicos = new ArrayList<>();
 
         // Inicializar Firebase Database
-        usuariosReference = FirebaseDatabase.getInstance("https://practica-taller-34b3f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("usuarios");
-        cochesReference = FirebaseDatabase.getInstance("https://practica-taller-34b3f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("coches");
+        usuariosReference = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("usuarios");
+        cochesReference = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("coches");
 
         // Configurar el adaptador para el Spinner
         mecanicoAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, nombresMecanicos);

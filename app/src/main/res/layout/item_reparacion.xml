@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Información de la reparación -->
+        <TextView
+            android:id="@+id/textMatriculaCoche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/matricula_titulo"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textMecanicoAsignado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mecanico"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textDescripcionReparacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textEstadoReparacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/estado"
+            android:textSize="14sp" />
+
+
+
+        <!-- RecyclerView para las tareas asociadas -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTareas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:paddingTop="8dp"
+            app:layout_constraintHeight_min="100dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

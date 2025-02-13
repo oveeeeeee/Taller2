@@ -73,7 +73,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         tipoUsuario.setAdapter(adapter);
 
         // Referencia a Firebase
-        databaseReference = FirebaseDatabase.getInstance("https://console.firebase.google.com/u/4/project/taller2-f2bce/database/taller2-f2bce-default-rtdb/data/~2F").getReference("usuarios");
+        databaseReference = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("usuarios");
 
         // Configurar el botón "Buscar"
         botonBuscar.setOnClickListener(v -> buscarUsuario());

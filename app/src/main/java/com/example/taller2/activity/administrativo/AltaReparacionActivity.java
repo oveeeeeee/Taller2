@@ -61,7 +61,7 @@ public class AltaReparacionActivity extends AppCompatActivity {
         cochesList = new ArrayList<>();
 
         // Inicializar Firebase Database
-        databaseReference = FirebaseDatabase.getInstance("https://console.firebase.google.com/u/4/project/taller2-f2bce/database/taller2-f2bce-default-rtdb/data/~2F").getReference();
+        databaseReference = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
 
         // Configurar adaptador para el Spinner
         cocheAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cochesList);

@@ -64,7 +64,7 @@ public class AltaEmpleadoActivity extends AppCompatActivity {
         altaEmpleadoLayout = findViewById(R.id.altaEmpleadoLayout);
 
         // Obtener referencia al nodo "users" en Firebase
-        databaseReference = FirebaseDatabase.getInstance("https://console.firebase.google.com/u/4/project/taller2-f2bce/database/taller2-f2bce-default-rtdb/data/~2F").getReference("usuarios");
+        databaseReference = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("usuarios");
 
         // Configurar el Spinner con los valores de puestos de empleados
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.puestos_empleados, android.R.layout.simple_spinner_item);

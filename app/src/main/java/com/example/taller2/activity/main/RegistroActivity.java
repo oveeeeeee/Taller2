@@ -54,7 +54,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         // Inicializar Firebase
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance("https://practica-taller-34b3f-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
+        mDatabase = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
 
         // Inicializar la base de datos SQLite
         dbHelper = new SQLiteHelper(this);

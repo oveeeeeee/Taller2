@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.taller2.R;
+import com.example.taller2.activity.main.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 
