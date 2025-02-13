@@ -35,6 +35,8 @@ android {
 dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation ("com.google.firebase:firebase-auth:21.1.0")   // Firebase Authentication
+    implementation ("com.google.firebase:firebase-database:20.0.5") // Firebase Realtime Database
     implementation("androidx.compose.material3:material3:1.3.1")
     implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.4.0-alpha05")

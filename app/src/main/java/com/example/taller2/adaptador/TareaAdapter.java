@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taller2.R;
+import com.example.taller2.activity.mecanico.TareaOpcionesActivity;
 import com.example.taller2.modelo.Tarea;
 
 import java.util.List;
