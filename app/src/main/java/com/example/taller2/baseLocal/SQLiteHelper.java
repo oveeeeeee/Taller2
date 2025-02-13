@@ -22,10 +22,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final int VERSION_BD = 1;
 
     // Nombres de las tablas
-    private static final String TABLA_USUARIOS = "usuarios";
-    private static final String TABLA_PROVEEDORES = "proveedores";
-    private static final String TABLA_PIEZAS = "piezas";
-    private static final String TABLA_PEDIDOS = "pedidos";
+    public static final String TABLA_USUARIOS = "usuarios";
+    public static final String TABLA_PROVEEDORES = "proveedores";
+    public static final String TABLA_PIEZAS = "piezas";
+    public static final String TABLA_PEDIDOS = "pedidos";
 
     // Columnas de la tabla usuarios
     private static final String COLUMNA_USUARIO_NOMBRE = "nombre";
@@ -34,21 +34,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String COLUMNA_USUARIO_TIPO = "tipo_usuario";
 
     // Columnas de la tabla proveedores
-    private static final String COLUMNA_PROVEEDOR_ID = "id";
-    private static final String COLUMNA_PROVEEDOR_NOMBRE = "nombre";
-    private static final String COLUMNA_PROVEEDOR_CONTACTO = "contacto";
+    public static final String COLUMNA_PROVEEDOR_ID = "id";
+    public static final String COLUMNA_PROVEEDOR_NOMBRE = "nombre";
+    public static final String COLUMNA_PROVEEDOR_CONTACTO = "contacto";
 
     // Columnas de la tabla piezas
-    private static final String COLUMNA_PIEZA_ID = "id";
-    private static final String COLUMNA_PIEZA_NOMBRE = "nombre";
-    private static final String COLUMNA_PIEZA_CANTIDAD = "cantidad_stock";
-    private static final String COLUMNA_PIEZA_PRECIO = "precio";
+    public static final String COLUMNA_PIEZA_ID = "id";
+    public static final String COLUMNA_PIEZA_NOMBRE = "nombre";
+    public static final String COLUMNA_PIEZA_CANTIDAD = "cantidad_stock";
+    public static final String COLUMNA_PIEZA_PRECIO = "precio";
 
     // Columnas de la tabla pedidos
-    private static final String COLUMNA_PEDIDO_ID = "id";
-    private static final String COLUMNA_PEDIDO_PIEZA_ID = "pieza_id";
-    private static final String COLUMNA_PEDIDO_PROVEEDOR_ID = "proveedor_id";
-    private static final String COLUMNA_PEDIDO_CANTIDAD = "cantidad";
+    public static final String COLUMNA_PEDIDO_ID = "id";
+    public static final String COLUMNA_PEDIDO_PIEZA_ID = "pieza_id";
+    public static final String COLUMNA_PEDIDO_PROVEEDOR_ID = "proveedor_id";
+    public static final String COLUMNA_PEDIDO_CANTIDAD = "cantidad";
 
     /**
      * Constructor de la clase SQLiteHelper.

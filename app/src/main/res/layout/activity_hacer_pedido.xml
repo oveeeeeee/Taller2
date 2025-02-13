@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".activity.administrativo.HacerPedidoActivity">
+
+    <!-- Título de la actividad -->
+    <TextView
+        android:id="@+id/tituloHacerPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_pedido"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Spinner para seleccionar la pieza -->
+    <TextView
+        android:id="@+id/textPieza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccionar_pieza"
+        android:textSize="16sp"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toBottomOf="@id/tituloHacerPedido"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="36dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerPieza"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textPieza"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Campo para introducir la cantidad -->
+    <TextView
+        android:id="@+id/textCantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cantidad_pedido"
+        android:textSize="16sp"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toBottomOf="@id/spinnerPieza"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/editCantidad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="number"
+        app:boxStrokeColor="@color/colorAccent"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/textCantidad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Spinner para seleccionar proveedor -->
+    <TextView
+        android:id="@+id/textProveedor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccionar_proveedor"
+        android:textSize="16sp"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toBottomOf="@id/editCantidad"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerProveedor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Botón para enviar el pedido -->
+    <Button
+        android:id="@+id/botonHacerPedido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_hacer_pedido"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerProveedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

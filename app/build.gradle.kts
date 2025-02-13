@@ -35,6 +35,9 @@ android {
 dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation("androidx.compose.material3:material3:1.3.1")
+    implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
+    implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.4.0-alpha05")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

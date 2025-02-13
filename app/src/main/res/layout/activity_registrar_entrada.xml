@@ -1,0 +1,157 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/white"
+    tools:context=".activity.administrativo.RegistrarEntradaActivity">
+
+    <!-- Contenedor con ScrollView para los campos -->
+    <ScrollView
+        android:id="@+id/scrollFormulario"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/botonRegistrarEntrada"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <!-- Título Principal -->
+            <TextView
+                android:id="@+id/tituloRegistrarEntrada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo_entrada_coche"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Campo: Matrícula del coche -->
+            <TextView
+                android:id="@+id/labelMatricula"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/matricula"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/campoMatricula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_matricula"
+                app:boxStrokeColor="@color/colorAccent"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Campo: Marca del coche -->
+            <TextView
+                android:id="@+id/labelMarca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/marca"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/campoMarca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_marca"
+                android:background="@drawable/edittext_background"
+                app:boxStrokeColor="@color/colorAccent"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Campo: Modelo del coche -->
+            <TextView
+                android:id="@+id/labelModelo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modelo"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/campoModelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_modelo"
+                app:boxStrokeColor="@color/colorAccent"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Campo: Correo del cliente -->
+            <TextView
+                android:id="@+id/labelCorreoCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/correo_cliente"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/campoCorreoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_correo_cliente"
+                android:background="@drawable/edittext_background"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Campo: Mecánico jefe -->
+            <TextView
+                android:id="@+id/labelMecanico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorAccent"
+                android:text="@string/asignar_mecsnico_jefe"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_marginTop="16dp" />
+
+            <Spinner
+                android:id="@+id/spinnerMecanico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_background"
+                android:padding="8dp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botón fijo en la parte inferior -->
+    <Button
+        android:id="@+id/botonRegistrarEntrada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/button_registrar_entrada"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".activity.administrativo.NotificacionClienteActivity">
+
+    <!-- Título de la actividad -->
+    <TextView
+        android:id="@+id/tituloNotificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notificacion_cliente"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Campo para introducir la matrícula del coche -->
+    <TextView
+        android:id="@+id/textMatricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/matricula_coche"
+        android:textSize="16sp"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toBottomOf="@id/tituloNotificaciones"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <EditText
+        android:id="@+id/editMatricula"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:boxStrokeColor="@color/colorAccent"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/textMatricula"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="text"/>
+
+    <!-- ChipGroup para seleccionar tipo de notificación -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupNotificacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/editMatricula"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:singleSelection="true"> <!-- Asegura que solo un chip pueda seleccionarse a la vez -->
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipReparacionFinalizada"
+            android:text="@string/reparacion_finalizada"
+            android:checkable="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPresupuesto"
+            android:text="@string/presupuesto"
+            android:checkable="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <!-- TextInput para la descripción del presupuesto -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutDescripcion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/chipGroupNotificacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDescripcionPresupuesto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/descripcion_presupuesto"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- TextInput para el importe del presupuesto -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutImporte"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutDescripcion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editImportePresupuesto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/importe_presupuesto"
+            android:inputType="numberDecimal"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botón para enviar la notificación -->
+    <Button
+        android:id="@+id/botonEnviarNotificacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enviar_notificacion"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutImporte"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
