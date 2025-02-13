@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.taller2.modelo.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase SQLiteHelper que gestiona la base de datos SQLite para el proyecto.
  * Esta clase es responsable de crear las tablas, actualizar la base de datos,
@@ -179,4 +182,43 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Obtiene la lista de nombres de piezas disponibles.
+     */
+    public List<String> obtenerPiezas() {
+        List<String> listaPiezas = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMNA_PIEZA_NOMBRE + " FROM " + TABLA_PIEZAS, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                listaPiezas.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return listaPiezas;
+    }
+
+    /**
+     * Registra un pedido en la base de datos.
+     */
+    public void insertarPedido(String piezaNombre, int cantidad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT " + COLUMNA_PIEZA_ID + " FROM " + TABLA_PIEZAS +
+                " WHERE " + COLUMNA_PIEZA_NOMBRE + " = ?", new String[]{piezaNombre});
+        if (cursor.moveToFirst()) {
+            int piezaId = cursor.getInt(0);
+            ContentValues valores = new ContentValues();
+            valores.put(COLUMNA_PEDIDO_PIEZA_ID, piezaId);
+            valores.put(COLUMNA_PEDIDO_PROVEEDOR_ID, 1); // Proveedor predeterminado
+            valores.put(COLUMNA_PEDIDO_CANTIDAD, cantidad);
+
+            db.insert(TABLA_PEDIDOS, null, valores);
+        }
+        cursor.close();
+        db.close();
+    }
 }

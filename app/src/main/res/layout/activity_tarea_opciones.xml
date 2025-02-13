@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".activity.mecanico.TareaOpcionesActivity">
+
+    <!-- Título de la pantalla -->
+    <TextView
+        android:id="@+id/tituloOpciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/opciones_tarea"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Botón para modificar tarea -->
+    <Button
+        android:id="@+id/btnModificarTarea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/modificar_tarea"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/tituloOpciones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón para solicitar piezas -->
+    <Button
+        android:id="@+id/btnSolicitarPiezas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitar_piezas"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/btnModificarTarea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón para incluir comentarios -->
+    <Button
+        android:id="@+id/btnIncluirComentarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/incluir_comentarios"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/btnSolicitarPiezas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

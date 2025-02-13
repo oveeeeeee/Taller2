@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".activity.mecanico.ModificarTareaActivity">
+
+    <!-- Título de la pantalla -->
+    <TextView
+        android:id="@+id/tituloModificarTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_modificar_tarea"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Nombre de la tarea (no editable) -->
+    <TextView
+        android:id="@+id/textNombreTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre_tarea"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/tituloModificarTarea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <!-- Texto que indica el estado de la tarea, alineado a la izquierda -->
+    <TextView
+        android:id="@+id/textEstadoTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/estado_tarea"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/textNombreTarea"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Spinner para el estado de la tarea -->
+    <Spinner
+        android:id="@+id/spinnerEstadoTarea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textEstadoTarea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Botón para guardar cambios -->
+    <Button
+        android:id="@+id/btnGuardarTarea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/guardar_cambios"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/spinnerEstadoTarea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

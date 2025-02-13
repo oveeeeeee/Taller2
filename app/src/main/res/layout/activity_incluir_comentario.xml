@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.mecanico.IncluirComentarioActivity">
+
+    <!-- Título de la pantalla -->
+    <TextView
+        android:id="@+id/textTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_incluir_comentario"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="26dp"/>
+
+    <!-- Nombre de la tarea -->
+    <TextView
+        android:id="@+id/textNombreTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre_tarea"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/textTitulo"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Aquí se mostrará el nombre real de la tarea -->
+    <TextView
+        android:id="@+id/textTareaNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tarea"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/textNombreTarea"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- EditText para ingresar el comentario -->
+    <EditText
+        android:id="@+id/editComentario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/escribe_comentario"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        app:boxStrokeColor="@color/colorAccent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/textTareaNombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Botón para guardar el comentario -->
+    <Button
+        android:id="@+id/btnGuardarComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_guardar_comentario"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/editComentario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
