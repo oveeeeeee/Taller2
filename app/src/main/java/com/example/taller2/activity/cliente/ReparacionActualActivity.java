@@ -114,7 +114,7 @@ public class ReparacionActualActivity extends AppCompatActivity {
                 for (DataSnapshot reparacionSnapshot : snapshot.getChildren()) {
                     Reparacion reparacion = reparacionSnapshot.getValue(Reparacion.class);
                     // Filtrar solo reparaciones con estado "pendiente"
-                    if (reparacion != null && "pendiente".equalsIgnoreCase(reparacion.getEstadoReparacion())) {
+                    if (reparacion != null && "en curso".equalsIgnoreCase(reparacion.getEstadoReparacion())) {
                         listaReparaciones.add(reparacion);
                     }
                 }
@@ -122,7 +122,7 @@ public class ReparacionActualActivity extends AppCompatActivity {
 
                 // Mostrar mensaje de actualización
                 View rootView = findViewById(android.R.id.content);
-                Snackbar.make(rootView, "Reparaciones pendientes actualizadas.", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(rootView, "Reparaciones en curso actualizadas.", Snackbar.LENGTH_SHORT).show();
             }
 
             @Override

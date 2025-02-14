@@ -116,7 +116,7 @@ public class NotificacionAdapter extends RecyclerView.Adapter<NotificacionAdapte
      */
     private void gestionarPresupuesto(ViewHolder holder, Notificacion notificacion, String estado) {
         // Actualiza el estado en la base de datos
-        DatabaseReference notificacionRef = FirebaseDatabase.getInstance().getReference("notificaciones");
+        DatabaseReference notificacionRef = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("notificaciones");
         notificacionRef.child(notificacion.getMatricula()).child("estado").setValue(estado);
 
         // Muestra el mensaje de confirmación con Snackbar

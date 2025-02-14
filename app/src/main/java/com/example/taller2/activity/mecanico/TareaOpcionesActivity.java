@@ -2,6 +2,7 @@ package com.example.taller2.activity.mecanico;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -39,14 +40,22 @@ public class TareaOpcionesActivity extends AppCompatActivity {
         btnIncluirComentarios = findViewById(R.id.btnIncluirComentarios);
 
         // Obtener ID de la tarea desde el Intent
-        final String tareaId = getIntent().getStringExtra("tareaId");
+        final String tareaId = getIntent().getStringExtra("TAREA_ID");
+
+// Verificar si el ID está llegando
+        if (tareaId == null) {
+            Log.e("TareaOpcionesActivity", "ERROR: tareaId es null");
+        } else {
+            Log.d("TareaOpcionesActivity", "Tarea ID recibido: " + tareaId);
+        }
 
         // Acción para ir a la pantalla de modificar tarea
         btnModificarTarea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TareaOpcionesActivity.this, ModificarTareaActivity.class);
-                intent.putExtra("tareaId", tareaId);
+                intent.putExtra("TAREA_ID", tareaId);
+
                 startActivity(intent);
             }
         });
@@ -56,7 +65,8 @@ public class TareaOpcionesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TareaOpcionesActivity.this, SolicitarPiezasActivity.class);
-                intent.putExtra("tareaId", tareaId);
+                intent.putExtra("TAREA_ID", tareaId);
+
                 startActivity(intent);
             }
         });
@@ -66,7 +76,8 @@ public class TareaOpcionesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TareaOpcionesActivity.this, IncluirComentarioActivity.class);
-                intent.putExtra("tareaId", tareaId);
+                intent.putExtra("TAREA_ID", tareaId);
+
                 startActivity(intent);
             }
         });

@@ -221,8 +221,13 @@ public class DefinirTareaActivity extends AppCompatActivity {
                         DatabaseReference tareaRef = databaseTareas.push(); // Usar push() para generar una clave única
                         tareaRef.setValue(tarea)
                                 .addOnSuccessListener(aVoid1 -> {
+
+
+                                    databaseReparaciones.child(reparacionSeleccionada.getIdReparacion())
+                                            .child("estadoReparacion").setValue("en curso");
                                     // Confirmación de que la tarea se guardó
-                                    Snackbar.make(botonFlotanteConfirmar, "Tareas confirmadas.", Snackbar.LENGTH_SHORT).show();
+                                    Snackbar.make(botonFlotanteConfirmar, "Tareas confirmadas y reparación en curso.", Snackbar.LENGTH_SHORT).show();
+                                    seccionAsignarTarea.setVisibility(View.GONE);
                                 })
                                 .addOnFailureListener(e -> {
                                     // Manejo de error al guardar tarea

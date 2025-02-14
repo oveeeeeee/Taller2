@@ -48,6 +48,7 @@ public class IncluirComentarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incluir_comentario);
 
+
         // Obtener ID de la tarea desde el Intent
         tareaId = getIntent().getStringExtra("TAREA_ID");
         Log.d("IncluirComentario", "Tarea ID: " + tareaId);  // Esto permitirá ver el ID en el Logcat

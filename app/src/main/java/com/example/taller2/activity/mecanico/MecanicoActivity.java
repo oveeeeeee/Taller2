@@ -97,7 +97,6 @@ public class MecanicoActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Log.d("MecanicoActivity", "Número de tareas encontradas: " + dataSnapshot.getChildrenCount());
                         listaTareas.clear();
 
                         // Procesar cada tarea asignada
