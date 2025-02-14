@@ -16,15 +16,15 @@ import java.util.List;
 
 /**
  * Adaptador para mostrar las piezas en un RecyclerView.
- * Este adaptador maneja la lista de piezas y las vincula con las vistas correspondientes.
+ * Este adaptador maneja la lista de piezas y permite filtrar los resultados.
  *
  * @author Laura Ovelleiro
  */
 public class PiezaAdapter extends RecyclerView.Adapter<PiezaAdapter.ViewHolder> {
 
     // Lista de piezas a mostrar en el RecyclerView
-    private List<Pieza> piezas;
-    private List<Pieza> piezasFiltradas;
+    private List<Pieza> listaPiezas;
+    private List<Pieza> listaPiezasOriginal; // Lista original para filtrar
 
     /**
      * Constructor del adaptador para inicializar la lista de piezas.
@@ -32,8 +32,8 @@ public class PiezaAdapter extends RecyclerView.Adapter<PiezaAdapter.ViewHolder> 
      * @param listaPiezas Lista de piezas a mostrar.
      */
     public PiezaAdapter(List<Pieza> listaPiezas) {
-        this.piezas = listaPiezas;
-        this.piezasFiltradas = new ArrayList<>(listaPiezas);
+        this.listaPiezas = new ArrayList<>(listaPiezas);
+        this.listaPiezasOriginal = new ArrayList<>(listaPiezas);
     }
 
     /**
@@ -46,7 +46,6 @@ public class PiezaAdapter extends RecyclerView.Adapter<PiezaAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Infla el layout item_pieza y lo devuelve como ViewHolder
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pieza, parent, false);
         return new ViewHolder(view);
     }
@@ -54,23 +53,20 @@ public class PiezaAdapter extends RecyclerView.Adapter<PiezaAdapter.ViewHolder> 
     /**
      * Asocia los datos de una pieza a los elementos de la vista en el ViewHolder.
      *
-     * @param holder El ViewHolder que contiene las vistas a actualizar.
+     * @param holder   El ViewHolder que contiene las vistas a actualizar.
      * @param position La posición de la pieza en la lista.
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         try {
-            // Obtiene la pieza de la lista en la posición indicada
-            Pieza pieza = piezasFiltradas.get(position);
+            Pieza pieza = listaPiezas.get(position);
 
             if (pieza != null) {
-                // Asigna los datos de la pieza a las vistas correspondientes
                 holder.textNombre.setText(pieza.getNombre());
                 holder.textCantidad.setText("Disponible: " + pieza.getCantidadStock() + " unidades");
                 holder.textPrecio.setText("Precio: " + pieza.getPrecio() + " €");
             }
         } catch (Exception e) {
-            // En caso de error, imprime el stack trace
             e.printStackTrace();
         }
     }
@@ -82,44 +78,41 @@ public class PiezaAdapter extends RecyclerView.Adapter<PiezaAdapter.ViewHolder> 
      */
     @Override
     public int getItemCount() {
-        return piezasFiltradas != null ? piezasFiltradas.size() : 0;
+        return listaPiezas != null ? listaPiezas.size() : 0;
     }
 
     /**
-     * Filtra las piezas según el término de búsqueda.
+     * Filtra la lista de piezas según el texto ingresado en el SearchView.
      *
-     * @param query El término de búsqueda que se utilizará para filtrar las piezas.
+     * @param texto El texto de búsqueda.
      */
-    public void filtrar(String query) {
-        if (query.isEmpty()) {
-            piezasFiltradas = new ArrayList<>(piezas);
+    public void filtrar(String texto) {
+        List<Pieza> listaFiltrada = new ArrayList<>();
+
+        if (texto.isEmpty()) {
+            listaFiltrada.addAll(listaPiezasOriginal); // Si el texto está vacío, mostramos todos los elementos
         } else {
-            List<Pieza> listaFiltrada = new ArrayList<>();
-            for (Pieza pieza : piezas) {
-                if (pieza.getNombre().toLowerCase().contains(query.toLowerCase())) {
+            String textoLower = texto.toLowerCase();
+            for (Pieza pieza : listaPiezasOriginal) {
+                if (pieza.getNombre().toLowerCase().contains(textoLower)) {
                     listaFiltrada.add(pieza);
                 }
             }
-            piezasFiltradas = listaFiltrada;
         }
-        notifyDataSetChanged();
+
+        listaPiezas.clear();
+        listaPiezas.addAll(listaFiltrada);
+        notifyDataSetChanged(); // Notifica al RecyclerView que los datos han cambiado
     }
 
     /**
      * ViewHolder para contener las vistas de cada elemento de la lista.
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Vistas para mostrar los datos de la pieza
         TextView textNombre, textCantidad, textPrecio;
 
-        /**
-         * Constructor del ViewHolder que inicializa las vistas.
-         *
-         * @param itemView La vista del item que contiene los elementos visuales.
-         */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Inicializa las vistas utilizando findViewById
             textNombre = itemView.findViewById(R.id.textNombrePieza);
             textCantidad = itemView.findViewById(R.id.textCantidadPieza);
             textPrecio = itemView.findViewById(R.id.textPrecioPieza);

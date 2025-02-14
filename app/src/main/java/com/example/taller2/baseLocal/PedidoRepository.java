@@ -22,7 +22,7 @@ import java.util.List;
 public class PedidoRepository {
 
     private SQLiteDatabase database;
-    private SQLiteHelper dbHelper;
+    private DBHelper dbHelper;
 
     /**
      * Constructor que inicializa el repositorio con el contexto de la aplicación.
@@ -30,7 +30,7 @@ public class PedidoRepository {
      * @param context El contexto de la aplicación.
      */
     public PedidoRepository(Context context) {
-        dbHelper = new SQLiteHelper(context);
+        dbHelper = new DBHelper(context);
     }
 
     /**
@@ -57,11 +57,11 @@ public class PedidoRepository {
      */
     public boolean realizarPedido(Pedido pedido) {
         ContentValues values = new ContentValues();
-        values.put(SQLiteHelper.COLUMNA_PEDIDO_PIEZA_ID, pedido.getPieza().getId());
-        values.put(SQLiteHelper.COLUMNA_PEDIDO_PROVEEDOR_ID, pedido.getProveedor().getId());
-        values.put(SQLiteHelper.COLUMNA_PEDIDO_CANTIDAD, pedido.getCantidad());
+        values.put("pieza_id", pedido.getPieza().getId());
+        values.put("proveedor_id", pedido.getProveedor().getId());
+        values.put("cantidad", pedido.getCantidad());
 
-        long result = database.insert(SQLiteHelper.TABLA_PEDIDOS, null, values);
+        long result = database.insert("Pedidos", null, values);
         return result != -1; // Si la inserción fue exitosa, devuelve true
     }
 
@@ -76,34 +76,28 @@ public class PedidoRepository {
         List<Pedido> pedidos = new ArrayList<>();
 
         // Query para obtener los pedidos con la información de la pieza y el proveedor
-        String query = "SELECT p." + SQLiteHelper.COLUMNA_PEDIDO_ID + " AS pedido_id, "
-                + SQLiteHelper.COLUMNA_PEDIDO_PIEZA_ID + ", "
-                + SQLiteHelper.COLUMNA_PEDIDO_PROVEEDOR_ID + ", "
-                + SQLiteHelper.COLUMNA_PEDIDO_CANTIDAD + ", "
-                + SQLiteHelper.COLUMNA_PIEZA_NOMBRE + " AS nombre_pieza, "
-                + SQLiteHelper.COLUMNA_PIEZA_CANTIDAD + " AS cantidad_stock, "
-                + SQLiteHelper.COLUMNA_PIEZA_PRECIO + ", "
-                + SQLiteHelper.COLUMNA_PROVEEDOR_NOMBRE + " AS nombre_proveedor, "
-                + SQLiteHelper.COLUMNA_PROVEEDOR_CONTACTO + " AS contacto_proveedor "
-                + "FROM " + SQLiteHelper.TABLA_PEDIDOS + " p "
-                + "JOIN " + SQLiteHelper.TABLA_PIEZAS + " pz ON p." + SQLiteHelper.COLUMNA_PEDIDO_PIEZA_ID + " = pz." + SQLiteHelper.COLUMNA_PIEZA_ID + " "
-                + "JOIN " + SQLiteHelper.TABLA_PROVEEDORES + " pr ON p." + SQLiteHelper.COLUMNA_PEDIDO_PROVEEDOR_ID + " = pr." + SQLiteHelper.COLUMNA_PROVEEDOR_ID;
+        String query = "SELECT p.id AS pedido_id, pieza_id, proveedor_id, cantidad, " +
+                "pz.nombre AS nombre_pieza, pz.cantidad_stock, " +
+                "pr.nombre AS nombre_proveedor " +
+                "FROM Pedidos p " +
+                "JOIN Piezas pz ON p.pieza_id = pz.id " +
+                "JOIN Proveedores pr ON p.proveedor_id = pr.id";
 
         Cursor cursor = database.rawQuery(query, null);
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                int pedidoId = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PEDIDO_ID));
-                int piezaId = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PEDIDO_PIEZA_ID));
-                String nombrePieza = cursor.getString(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PIEZA_NOMBRE));
-                int cantidadStock = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PIEZA_CANTIDAD));
-                double precio = cursor.getDouble(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PIEZA_PRECIO));
+                int pedidoId = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PEDIDO_ID));
+                int piezaId = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PIEZA_ID));
+                String nombrePieza = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PIEZA_NOMBRE));
+                int cantidadStock = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PIEZA_CANTIDAD));
+                double precio = cursor.getDouble(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PIEZA_PRECIO));
 
-                int proveedorId = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PEDIDO_PROVEEDOR_ID));
-                String nombreProveedor = cursor.getString(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PROVEEDOR_NOMBRE));
-                String contactoProveedor = cursor.getString(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PROVEEDOR_CONTACTO));
+                int proveedorId = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PROVEEDOR_ID));
+                String nombreProveedor = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PROVEEDOR_NOMBRE));
+                String contactoProveedor = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PROVEEDOR_CONTACTO));
 
-                int cantidad = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PEDIDO_CANTIDAD));
+                int cantidad = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PEDIDO_CANTIDAD));
 
                 // Creación de los objetos Pieza, Proveedor y Pedido
                 Pieza pieza = new Pieza(piezaId, nombrePieza, cantidadStock, precio);

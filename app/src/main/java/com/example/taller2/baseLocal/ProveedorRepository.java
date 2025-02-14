@@ -19,7 +19,7 @@ import java.util.List;
 public class ProveedorRepository {
 
     private SQLiteDatabase database;  // Instancia de la base de datos
-    private final SQLiteHelper dbHelper;  // Helper para manejar la base de datos
+    private final DBHelper dbHelper;  // Helper para manejar la base de datos
 
     /**
      * Constructor de la clase ProveedorRepository.
@@ -27,7 +27,7 @@ public class ProveedorRepository {
      * @param context Contexto de la aplicación.
      */
     public ProveedorRepository(Context context) {
-        dbHelper = new SQLiteHelper(context);
+        dbHelper = new DBHelper(context);
     }
 
     /**
@@ -53,14 +53,14 @@ public class ProveedorRepository {
      */
     public List<Proveedor> obtenerProveedores() {
         List<Proveedor> proveedores = new ArrayList<>();
-        Cursor cursor = database.query(SQLiteHelper.TABLA_PROVEEDORES, null, null, null, null, null, null);
+        Cursor cursor = database.query("Proveedores", null, null, null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 // Obtener los valores de las columnas
-                int id = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PROVEEDOR_ID));
-                String nombre = cursor.getString(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PROVEEDOR_NOMBRE));
-                String contacto = cursor.getString(cursor.getColumnIndexOrThrow(SQLiteHelper.COLUMNA_PROVEEDOR_CONTACTO));
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PROVEEDOR_ID));
+                String nombre = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PROVEEDOR_NOMBRE));
+                String contacto = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_PROVEEDOR_CONTACTO));
 
                 // Crear un nuevo proveedor y agregarlo a la lista
                 proveedores.add(new Proveedor(id, nombre, contacto));

@@ -12,166 +12,112 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase SQLiteHelper que gestiona la base de datos SQLite para el proyecto.
- * Esta clase es responsable de crear las tablas, actualizar la base de datos,
- * y realizar operaciones básicas como insertar y consultar usuarios.
+ * Clase SQLiteHelper para gestionar la base de datos de usuarios.
+ * Proporciona métodos para agregar y obtener usuarios en la base de datos.
  *
- * @author Laura Ovelleiro
+ * @autor Laura Ovelleiro
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
 
-    // Nombre y versión de la base de datos
-    private static final String NOMBRE_BD = "taller2.db";
-    private static final int VERSION_BD = 1;
+    private static final String DATABASE_NAME = "taller.db"; // Nombre de la base de datos
+    private static final int DATABASE_VERSION = 1;
 
-    // Nombres de las tablas
-    public static final String TABLA_USUARIOS = "usuarios";
-    public static final String TABLA_PROVEEDORES = "proveedores";
-    public static final String TABLA_PIEZAS = "piezas";
-    public static final String TABLA_PEDIDOS = "pedidos";
-
-    // Columnas de la tabla usuarios
-    private static final String COLUMNA_USUARIO_NOMBRE = "nombre";
-    private static final String COLUMNA_USUARIO_CORREO = "correo";
-    private static final String COLUMNA_USUARIO_CONTRASENA = "contrasena";
-    private static final String COLUMNA_USUARIO_TIPO = "tipo_usuario";
-
-    // Columnas de la tabla proveedores
-    public static final String COLUMNA_PROVEEDOR_ID = "id";
-    public static final String COLUMNA_PROVEEDOR_NOMBRE = "nombre";
-    public static final String COLUMNA_PROVEEDOR_CONTACTO = "contacto";
-
-    // Columnas de la tabla piezas
-    public static final String COLUMNA_PIEZA_ID = "id";
-    public static final String COLUMNA_PIEZA_NOMBRE = "nombre";
-    public static final String COLUMNA_PIEZA_CANTIDAD = "cantidad_stock";
-    public static final String COLUMNA_PIEZA_PRECIO = "precio";
-
-    // Columnas de la tabla pedidos
-    public static final String COLUMNA_PEDIDO_ID = "id";
-    public static final String COLUMNA_PEDIDO_PIEZA_ID = "pieza_id";
-    public static final String COLUMNA_PEDIDO_PROVEEDOR_ID = "proveedor_id";
-    public static final String COLUMNA_PEDIDO_CANTIDAD = "cantidad";
+    // Tabla de usuarios
+    private static final String TABLE_USERS = "users";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_USER_TYPE = "userType";
 
     /**
      * Constructor de la clase SQLiteHelper.
      *
-     * @param contexto El contexto de la aplicación para acceder a la base de datos.
+     * @param context Contexto de la aplicación.
      */
-    public SQLiteHelper(Context contexto) {
-        super(contexto, NOMBRE_BD, null, VERSION_BD);
+    public SQLiteHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     /**
-     * Método que se ejecuta cuando se crea la base de datos.
-     * Crea las tablas necesarias en la base de datos.
+     * Se ejecuta cuando la base de datos es creada por primera vez.
      *
-     * @param db El objeto SQLiteDatabase donde se crea la base de datos.
+     * @param db Instancia de la base de datos.
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Crear tabla de usuarios
-        String crearTablaUsuarios = "CREATE TABLE " + TABLA_USUARIOS + " ("
-                + COLUMNA_USUARIO_NOMBRE + " TEXT, "
-                + COLUMNA_USUARIO_CORREO + " TEXT PRIMARY KEY, "
-                + COLUMNA_USUARIO_CONTRASENA + " TEXT, "
-                + COLUMNA_USUARIO_TIPO + " TEXT)";
-        db.execSQL(crearTablaUsuarios);
-
-        // Crear tabla de proveedores
-        String crearTablaProveedores = "CREATE TABLE " + TABLA_PROVEEDORES + " ("
-                + COLUMNA_PROVEEDOR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COLUMNA_PROVEEDOR_NOMBRE + " TEXT NOT NULL, "
-                + COLUMNA_PROVEEDOR_CONTACTO + " TEXT NOT NULL)";
-        db.execSQL(crearTablaProveedores);
-
-        // Crear tabla de piezas
-        String crearTablaPiezas = "CREATE TABLE " + TABLA_PIEZAS + " ("
-                + COLUMNA_PIEZA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COLUMNA_PIEZA_NOMBRE + " TEXT NOT NULL, "
-                + COLUMNA_PIEZA_CANTIDAD + " INTEGER NOT NULL, "
-                + COLUMNA_PIEZA_PRECIO + " REAL NOT NULL)";
-        db.execSQL(crearTablaPiezas);
-
-        // Crear tabla de pedidos
-        String crearTablaPedidos = "CREATE TABLE " + TABLA_PEDIDOS + " ("
-                + COLUMNA_PEDIDO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COLUMNA_PEDIDO_PIEZA_ID + " INTEGER NOT NULL, "
-                + COLUMNA_PEDIDO_PROVEEDOR_ID + " INTEGER NOT NULL, "
-                + COLUMNA_PEDIDO_CANTIDAD + " INTEGER NOT NULL, "
-                + "FOREIGN KEY(" + COLUMNA_PEDIDO_PIEZA_ID + ") REFERENCES " + TABLA_PIEZAS + "(" + COLUMNA_PIEZA_ID + "), "
-                + "FOREIGN KEY(" + COLUMNA_PEDIDO_PROVEEDOR_ID + ") REFERENCES " + TABLA_PROVEEDORES + "(" + COLUMNA_PROVEEDOR_ID + "))";
-        db.execSQL(crearTablaPedidos);
+        // Crear la tabla de usuarios
+        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " ("
+                + COLUMN_NAME + " TEXT,"
+                + COLUMN_EMAIL + " TEXT PRIMARY KEY,"
+                + COLUMN_PASSWORD + " TEXT,"
+                + COLUMN_USER_TYPE + " TEXT)";
+        db.execSQL(CREATE_USERS_TABLE);
     }
 
     /**
-     * Método que se ejecuta cuando se actualiza la base de datos.
-     * Elimina las tablas antiguas y crea las nuevas.
+     * Se ejecuta cuando se actualiza la base de datos.
      *
-     * @param db El objeto SQLiteDatabase que contiene la base de datos.
-     * @param oldVersion La versión antigua de la base de datos.
-     * @param newVersion La nueva versión de la base de datos.
+     * @param db Instancia de la base de datos.
+     * @param oldVersion Versión anterior de la base de datos.
+     * @param newVersion Nueva versión de la base de datos.
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLA_USUARIOS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLA_PROVEEDORES);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLA_PIEZAS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLA_PEDIDOS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         onCreate(db);
     }
 
     /**
      * Método para insertar un nuevo usuario en la base de datos.
      *
-     * @param usuario El objeto Usuario que representa al nuevo usuario.
+     * @param user El objeto User que representa al nuevo usuario.
      * @return true si la inserción fue exitosa, false si falló.
      */
-    public boolean anadirUsuario(Usuario usuario) {
+    public boolean anadirUsuario(Usuario user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMNA_USUARIO_NOMBRE, usuario.getNombre());
-        values.put(COLUMNA_USUARIO_CORREO, usuario.getEmail());
-        values.put(COLUMNA_USUARIO_CONTRASENA, usuario.getPassword());
-        values.put(COLUMNA_USUARIO_TIPO, usuario.getTipo());
+        values.put(COLUMN_NAME, user.getNombre());
+        values.put(COLUMN_EMAIL, user.getEmail());
+        values.put(COLUMN_PASSWORD, user.getPassword());
+        values.put(COLUMN_USER_TYPE, user.getTipo());
 
         // Insertar en la tabla de usuarios
-        long resultado = db.insert(TABLA_USUARIOS, null, values);
+        long result = db.insert(TABLE_USERS, null, values);
         db.close();
 
         // Si el resultado es mayor que -1, la inserción fue exitosa
-        return resultado != -1;
+        return result != -1;
     }
 
     /**
      * Método para obtener un usuario por su correo electrónico.
      *
-     * @param email Correo electrónico del usuario a buscar.
-     * @return El objeto Usuario si se encuentra, null si no se encuentra.
+     * @param email Correo electrónico del usuario.
+     * @return El objeto User si se encuentra, null si no se encuentra.
      */
-    public Usuario getUsuarioConEmail(String email) {
+    public Usuario getUserByEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLA_USUARIOS, null, COLUMNA_USUARIO_CORREO + "=?", new String[]{email},
+        Cursor cursor = db.query(TABLE_USERS, null, COLUMN_EMAIL + "=?", new String[]{email},
                 null, null, null);
 
         // Verificar si el cursor tiene datos
         if (cursor != null && cursor.moveToFirst()) {
-            // Obtener los índices de las columnas
-            int nombreIndex = cursor.getColumnIndex(COLUMNA_USUARIO_NOMBRE);
-            int emailIndex = cursor.getColumnIndex(COLUMNA_USUARIO_CORREO);
-            int passwordIndex = cursor.getColumnIndex(COLUMNA_USUARIO_CONTRASENA);
-            int tipoIndex = cursor.getColumnIndex(COLUMNA_USUARIO_TIPO);
+            // Comprobar si las columnas existen
+            int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
+            int emailIndex = cursor.getColumnIndex(COLUMN_EMAIL);
+            int passwordIndex = cursor.getColumnIndex(COLUMN_PASSWORD);
+            int userTypeIndex = cursor.getColumnIndex(COLUMN_USER_TYPE);
 
-            // Verificar si las columnas existen
-            if (nombreIndex >= 0 && emailIndex >= 0 && passwordIndex >= 0 && tipoIndex >= 0) {
-                Usuario usuario = new Usuario(
-                        cursor.getString(nombreIndex),
+            // Verificar si los índices son válidos
+            if (nameIndex >= 0 && emailIndex >= 0 && passwordIndex >= 0 && userTypeIndex >= 0) {
+                Usuario user = new Usuario(
+                        cursor.getString(nameIndex),
                         cursor.getString(emailIndex),
                         cursor.getString(passwordIndex),
-                        cursor.getString(tipoIndex)
+                        cursor.getString(userTypeIndex)
                 );
                 cursor.close();
-                return usuario;
+                return user;
             } else {
                 cursor.close();
                 return null; // Si alguna columna no se encuentra, retornar null
@@ -180,45 +126,5 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             cursor.close();
             return null; // Si no se encuentran resultados, retornar null
         }
-    }
-
-    /**
-     * Obtiene la lista de nombres de piezas disponibles.
-     */
-    public List<String> obtenerPiezas() {
-        List<String> listaPiezas = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT " + COLUMNA_PIEZA_NOMBRE + " FROM " + TABLA_PIEZAS, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                listaPiezas.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        db.close();
-        return listaPiezas;
-    }
-
-    /**
-     * Registra un pedido en la base de datos.
-     */
-    public void insertarPedido(String piezaNombre, int cantidad) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery("SELECT " + COLUMNA_PIEZA_ID + " FROM " + TABLA_PIEZAS +
-                " WHERE " + COLUMNA_PIEZA_NOMBRE + " = ?", new String[]{piezaNombre});
-        if (cursor.moveToFirst()) {
-            int piezaId = cursor.getInt(0);
-            ContentValues valores = new ContentValues();
-            valores.put(COLUMNA_PEDIDO_PIEZA_ID, piezaId);
-            valores.put(COLUMNA_PEDIDO_PROVEEDOR_ID, 1); // Proveedor predeterminado
-            valores.put(COLUMNA_PEDIDO_CANTIDAD, cantidad);
-
-            db.insert(TABLA_PEDIDOS, null, valores);
-        }
-        cursor.close();
-        db.close();
     }
 }

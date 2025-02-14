@@ -81,4 +81,10 @@ public class Proveedor {
     public void setContacto(String contacto) {
         this.contacto = contacto;
     }
+
+    @Override
+    public String toString() {
+        return nombre; // representa el proveedor
+    }
+
 }

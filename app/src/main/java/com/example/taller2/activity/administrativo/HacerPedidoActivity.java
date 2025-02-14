@@ -2,15 +2,13 @@ package com.example.taller2.activity.administrativo;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.taller2.R;
 import com.example.taller2.baseLocal.PedidoRepository;
@@ -21,10 +19,13 @@ import com.example.taller2.modelo.Pieza;
 import com.example.taller2.modelo.Proveedor;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Actividad para realizar un pedido de piezas a proveedores.
- * Permite seleccionar una pieza y proveedor, ingresar la cantidad y realizar el pedido.
+ * Actividad para realizar pedidos de piezas a proveedores.
+ * Permite seleccionar una pieza, un proveedor y la cantidad deseada,
+ * validando los datos antes de registrar el pedido en la base de datos.
  *
  * @author Laura Ovelleiro
  */
@@ -38,10 +39,10 @@ public class HacerPedidoActivity extends AppCompatActivity {
     private PedidoRepository pedidoRepository;
 
     /**
-     * Método que se llama cuando la actividad es creada.
+     * Método que se ejecuta cuando la actividad es creada.
      * Inicializa los repositorios, los elementos de la interfaz y configura el botón para realizar el pedido.
      *
-     * @param savedInstanceState Información sobre el estado previo de la actividad.
+     * @param savedInstanceState Estado previo de la actividad.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +65,37 @@ public class HacerPedidoActivity extends AppCompatActivity {
         proveedorRepository.open();
         pedidoRepository.open();
 
+        // Cargar datos en los Spinners
+        cargarPiezas();
+        cargarProveedores();
+
         // Configurar el botón para realizar el pedido
         botonHacerPedido.setOnClickListener(v -> realizarPedido());
     }
 
     /**
-     * Método para realizar el pedido de una pieza a un proveedor.
-     * Valida la entrada del usuario, crea un nuevo pedido y actualiza el stock de la pieza.
+     * Carga la lista de piezas en el Spinner correspondiente.
+     */
+    private void cargarPiezas() {
+        List<Pieza> piezas = piezaRepository.obtenerPiezas();
+        ArrayAdapter<Pieza> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, piezas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPieza.setAdapter(adapter);
+    }
+
+    /**
+     * Carga la lista de proveedores en el Spinner correspondiente.
+     */
+    private void cargarProveedores() {
+        List<Proveedor> proveedores = proveedorRepository.obtenerProveedores();
+        ArrayAdapter<Proveedor> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, proveedores);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerProveedor.setAdapter(adapter);
+    }
+
+    /**
+     * Realiza un pedido de una pieza a un proveedor.
+     * Valida los datos de entrada y, si son correctos, registra el pedido en la base de datos.
      */
     private void realizarPedido() {
         // Validar si se ha seleccionado una pieza
@@ -115,7 +140,7 @@ public class HacerPedidoActivity extends AppCompatActivity {
 
         if (exito) {
             // Actualizar el stock de la pieza
-            int nuevoStock = piezaSeleccionada.getCantidadStock() - cantidad;
+            int nuevoStock = piezaSeleccionada.getCantidadStock() + cantidad;
             boolean stockActualizado = piezaRepository.actualizarStock(piezaSeleccionada.getId(), nuevoStock);
 
             if (stockActualizado) {
@@ -129,24 +154,22 @@ public class HacerPedidoActivity extends AppCompatActivity {
     }
 
     /**
-     * Método para mostrar un mensaje usando Snackbar.
+     * Muestra un mensaje usando un Snackbar.
      *
      * @param mensaje El mensaje a mostrar.
      */
     private void mostrarMensaje(String mensaje) {
-        // Mostrar mensaje usando Snackbar
         View view = findViewById(android.R.id.content); // Obtiene la vista raíz
         Snackbar.make(view, mensaje, Snackbar.LENGTH_LONG).show();
     }
 
     /**
-     * Método llamado cuando la actividad es destruida.
-     * Cierra las conexiones a la base de datos.
+     * Método que se ejecuta cuando la actividad es destruida.
+     * Cierra las conexiones a la base de datos para evitar fugas de memoria.
      */
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Cerrar la base de datos al destruir la actividad
         piezaRepository.close();
         proveedorRepository.close();
         pedidoRepository.close();

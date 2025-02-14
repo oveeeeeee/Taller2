@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.taller2.R;
+import com.example.taller2.baseLocal.DBHelper;
 import com.example.taller2.baseLocal.SQLiteHelper;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -32,7 +33,7 @@ public class SolicitarPiezasActivity extends AppCompatActivity {
     private Spinner spinnerPiezas;
     private EditText editCantidad;
     private Button btnSolicitar;
-    private SQLiteHelper dbHelper;
+    private DBHelper dbHelper;
     private String piezaSeleccionada;
 
     @Override
@@ -40,7 +41,7 @@ public class SolicitarPiezasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitar_piezas);
 
-        dbHelper = new SQLiteHelper(this);
+        dbHelper = new DBHelper(this);
 
         spinnerPiezas = findViewById(R.id.spinnerPiezas);
         editCantidad = findViewById(R.id.editCantidad);

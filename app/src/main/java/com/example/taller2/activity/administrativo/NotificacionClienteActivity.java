@@ -58,7 +58,7 @@ public class NotificacionClienteActivity extends AppCompatActivity {
         botonEnviarNotificacion = findViewById(R.id.botonEnviarNotificacion);
 
         // Inicializar la base de datos de Firebase
-        mDatabase = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
+        mDatabase = FirebaseDatabase.getInstance("https://taller2-f2bce-default-rtdb.europe-west1.firebasedatabase.app/").getReference("notificaciones");
 
         // Manejar la selección de tipo de notificación
         chipGroupNotificacion.setOnCheckedChangeListener((group, checkedId) -> {
@@ -126,7 +126,7 @@ public class NotificacionClienteActivity extends AppCompatActivity {
      */
     private void enviarNotificacion(String matricula, Notificacion notificacion) {
         // Guardar la notificación en la base de datos
-        mDatabase.child("notificaciones").child(matricula).setValue(notificacion)
+        mDatabase.child(matricula).setValue(notificacion)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         mostrarDialogo("Éxito", "Notificación enviada correctamente.");
